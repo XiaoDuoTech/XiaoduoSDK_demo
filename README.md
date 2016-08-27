@@ -29,6 +29,7 @@ SDK 需要如下权限，如果缺失，需要在`AndroidManifest`中添加权�
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 ```
 <h1 id="init"></h1>
 ##2 初始化
