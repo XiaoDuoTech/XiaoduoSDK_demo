@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              tools:context="com.xiaoduotech.cvd_sdk.LoginActivity">
+
+<Button
+	android:id="@+id/btn"
+	android:layout_width="match_parent"
+	android:layout_margin="16dp"
+	android:layout_centerInParent="true"
+	android:textColor="#ffffff"
+	android:background="@drawable/selector_btn_primary"
+	android:text="C端登录"
+	android:layout_height="wrap_content"/>
+	<RelativeLayout
+		android:layout_below="@id/btn"
+		android:layout_width="match_parent"
+		android:layout_margin="16dp"
+		android:layout_height="50dp"
+		android:gravity="center_vertical"
+		>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="配置自定义风格:"
+			android:gravity="center"
+			android:textColor="@color/color_material_second_text"
+			android:textSize="16sp"
+		    android:layout_centerVertical="true"
+			/>
+		<android.support.v7.widget.SwitchCompat
+			android:layout_alignParentRight="true"
+			android:id="@+id/switch_btn"
+			android:layout_centerVertical="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="0.4dp"
+			android:layout_alignParentTop="true"
+		    android:background="@color/color_material_divider"/>
+
+	</RelativeLayout>
+
+</RelativeLayout>
