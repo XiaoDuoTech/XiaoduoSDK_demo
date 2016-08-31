@@ -1,13 +1,35 @@
-#晓多智能客服平台 SDK for Android 使用指南
+## Android 接入
 ----
-
->[TOC]
-
+ 
+<blockquote>
+	<div class="toc">
+	    <div class="toc">
+	 	<ul>
+	 		<li>
+	 		   <ul>
+	 			<li><a href="#1-android-studio-配置">1 Android Studio 配置</a></li>
+	 		   </ul>
+	 	   </li>
+	 	    <li>
+	 	        <ul>
+	 	    		<li><a href="#2-初始化">2 初始化</a></li>
+	 	    		<li><a href="#3-启动对话界面">3 启动对话界面</a><ul>
+	 	    		<li><a href="#31-配置用户信息">3.1 配置用户信息</a></li>
+	 	    		<li><a href="#32跳转对话界面">3.2跳转对话界面</a></li>
+	 	        </ul>
+	         </li>
+	         <li><a href="#4-自定义ui配置">4 自定义UI配置</a></li>
+	         <li><a href="#5-proguard">5 Proguard</a></li>
+        </ul>
+        </div>
+    </div>
+</blockquote>
 
 ----
 **注意：**
 - SDK 支持android sdk  14－24
 - 目前只支持android studio，后续版本将支持eclipse
+- 接入使用前需到[管理台](http://cvd.xiaoduotech.com/admin/)注册企业账号,并配置app sdk信息，获取**src**，**channelId**，**appkey**，使用[demo](https://github.com/XiaoDuoTech/XiaoduoSDK_demo)无需配置
 <h1 id="config"></h1>
 ##1 Android Studio 配置
 
@@ -16,7 +38,7 @@
 ```groovy
   dependencies{
   compile 'com.android.support:appcompat-v7:＋' //可以将‘＋’换成你的版本号
-  compile 'com.xiaoduoteck.xiaoduosdk:xiaoduosdk:0.1.4@aar'
+  compile 'com.xiaoduoteck.xiaoduosdk:xiaoduosdk:0.1.5@aar'
   }
 ```
 
@@ -29,7 +51,6 @@ SDK 需要如下权限，如果缺失，需要在`AndroidManifest`中添加权�
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 ```
 <h1 id="init"></h1>
 ##2 初始化
@@ -43,7 +64,7 @@ public class BaseApplication extends Application{
    @Override
    public void onCreate() {
         super.onCreate();
-        //3个参数中src 和 appkey 为必传参数，在CVD官网注册后可获取src 和 appkey。
+        //3个参数为必传参数，在CVD官网注册后配置app sdk信息即可获取src，channelId和 appkey。
         CVDManager.getInstance(this).init(src,channelId,appKey);
 
    }
@@ -53,11 +74,12 @@ public class BaseApplication extends Application{
 ```
 
 **参数说明**
+
 |参数 |说明|
 |:--:|:--:|
-|src|由管理台分发,在注册时获取|
-|channelId| 细分渠道号,用户自定义|
-|appKey|由管理台分发,在注册时获取|
+|src|企业id,[管理台](http://cvd.xiaoduotech.com/admin/)获取|
+|channelId| 细分渠道号,[管理台](http://cvd.xiaoduotech.com/admin/)获取|
+|appKey|[管理台](http://cvd.xiaoduotech.com/admin/)获取|
 **方法原型**
 ```java
 public void init(@NonNull String src, @NonNull int channelId, @NonNull String appKey)
@@ -77,6 +99,7 @@ CVDManager.getInstance(this).configUserInfo(tid,
         );
 ```
 **参数说明**
+
 |参数 |说明|
 |:--:|:--:|
 |tid|  用户tid,用户自定义|
