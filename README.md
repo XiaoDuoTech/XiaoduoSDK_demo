@@ -38,7 +38,8 @@
 ```groovy
   dependencies{
   compile 'com.android.support:appcompat-v7:＋' //可以将‘＋’换成你的版本号
-  compile 'com.xiaoduoteck.xiaoduosdk:xiaoduosdk:0.1.5@aar'
+  compile 'com.xiaoduoteck.xiaoduosdk:xiaoduosdk:latest.integration@aar'
+
   }
 ```
 
