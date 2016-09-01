@@ -14,6 +14,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url "http://maven.bughd.com/public"
+        }
     }
 }
 
@@ -25,7 +28,7 @@ ext {
     compileSdkVersion = 24
     targetSdkVersion = compileSdkVersion
     buildToolsVersion = '24.0.2'
-
+    bughd =  'im.fir:fir-sdk:latest.integration@aar'
 
 
 
