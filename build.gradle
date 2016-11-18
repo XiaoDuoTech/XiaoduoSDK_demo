@@ -24,10 +24,10 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 ext {
-    minSdkVersion = 14
-    compileSdkVersion = 24
+    minSdkVersion = 16
+    compileSdkVersion = 25
     targetSdkVersion = compileSdkVersion
-    buildToolsVersion = '24.0.2'
+    buildToolsVersion = '25.0.0'
     bughd =  'im.fir:fir-sdk:latest.integration@aar'
 
 

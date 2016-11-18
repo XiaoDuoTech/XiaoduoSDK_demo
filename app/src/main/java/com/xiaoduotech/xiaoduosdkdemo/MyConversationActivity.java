@@ -3,7 +3,7 @@ package com.xiaoduotech.xiaoduosdkdemo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.xiaoduotech.sdk.cvdsdk.CVDConversationActivity;
+import com.xiaoduotech.sdk.presentation.CVDConversationActivity;
 
 
 /**
