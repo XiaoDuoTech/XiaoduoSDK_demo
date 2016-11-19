@@ -72,7 +72,9 @@
 ```
 
 **本地依赖aar:**
+
 1、 下载 [aar](http://cdn.xiaoduotech.com/cvd/android/sdk-release.aar), 在`module`下新建`libs`目录，将下载好的[aar](http://cdn.xiaoduotech.com/cvd/android/sdk-release.aar)拷贝到`libs`目录下。
+
 2、 在`module`的build.gradle文件添加如下内容
 
 ```gradle
