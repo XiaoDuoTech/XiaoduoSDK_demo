@@ -1,8 +1,8 @@
 
                         
                     
-
-
+<br>
+<img width="300" src="http://xdfe.oss-cn-hangzhou.aliyuncs.com/cvd/android/71CDA0C2721C49CD23CA618E8E1754AF.png"><br>
 
 <h2 id="android-接入">Android 接入</h2>
 <hr>
@@ -100,6 +100,7 @@ dependencies {
 ```
 
 **权限**
+
 SDK 需要如下权限，如果缺失，需要在`AndroidManifest`中添加权限:
 
 ```xml
@@ -110,6 +111,7 @@ SDK 需要如下权限，如果缺失，需要在`AndroidManifest`中添加权�
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 ```
+
 <h1 id="init"></h1>
 
 ##2 初始化
@@ -379,6 +381,7 @@ login(Action2<Boolean, Exception> resultCallback);
 ```java
 CVDManager.getConversation(String groupId, Action1<NormalConversation> action1);
 ```
+
 - **发送消息**  可以通过会话对象向会话成员发送消息。
 
 |参数 |说明|
@@ -419,15 +422,20 @@ CVDManager.getConversation(String groupId, Action1<NormalConversation> action1);
         EventBus.getDefault().removeStickyEvent(sendingMessageResultEvent);
     }
 ```
+
 - **获取历史消息** 可以通过会话对象向服务端请求历史消息消息。
+
 |参数 |说明|
 |:--:|:--:|
 |count| 请求消息数|
 |maxId| 返回消息Id<=maxId,消息Id可通过message.getMessageId()获取，传`0`时返回最新的消息|
+
 >**实现分页请求** 服务端对该api的判断规则是返回`messageId <= maxId` 的`count` 条消息，如第一次请求了15条历史消息，取后续15条时，`maxId` 取上15条里值最小的`messageId`
+
 ```java
 conversation.getHisMessages(int count,long maxId);
 ```
+
 >获取结果将通过Eventbus 发送
 
 ```java
@@ -443,7 +451,9 @@ conversation.getHisMessages(int count,long maxId);
         }
     }
 ```
+
 - **获取会话展示数据** 需要的元素可以直接通过会话对象获取。
+
 ```java
 conversation.getName();//获取会话名称
 conversation.getAvatar();//获取会话展示头像
@@ -452,29 +462,38 @@ conversation.getUnRead();//获取未读消息数
 conversation.getLastMessage();//获取最后一条消息
 conversation.getEditabledraft(Context context); //获取草稿
 ```
+
 - **其他操作**
 
 ```java
 conversation.saveDraft(@Nullable Editable draft)//保存草稿，可以在onStop()时调用该方法保存草稿，下次onStart()时显示
 conversation.readAllMessage();//设置会话消息为已读，即将未读数置零
+
 ```
+
 ###6.2 消息
+
 在sdk中消息主要作为类型占位符，adapter可以根据不同类型加载不同的viewholder，来显示对应消息。
 具体消息内容在`CVDMessageElem`中，一个消息可以包含多个`CVDMessageElem`。
+ 
  
  <img src="http://yuml.me/diagram/nofunky/class/[CVDMessageElem]^-[CVDTextElem],[CVDMessageElem]^-[CVDFaceElem],[CVDMessageElem]^-[CVDImageElem],[CVDMessageElem]^-[CVDUrlElem],[CVDMessage]-.->[CVDMessageElem],[CVDMessage]^-[CVDTextMessage],[CVDMessage]^-[CVDImageMessage],[CVDMessage]^-[CVDNotifyMessage],[CVDMessage]^-[CVDUrlMessage]">
 
 
 1. **文本消息:  `CVDTextMessage` ** 
-	>包含 CVDTextElem  和 CVDFaceElem
+
+>包含 CVDTextElem  和 CVDFaceElem
 
 2.  **图片消息 `CVDImageMessage `**
+
 >包含CVDImageElem
 
 3.  **通知消息 `CVDNotifyMessage `**
+
 > 包含CVDTextElem和 CVDFaceElem, 本质上通知消息和文本消息是一样的，可以根据消息类型进行不同方式的展示。
 
 4. **url消息` CVDUrlMessage`**
+
 >包含CVDUrlElem , url消息是将用户输入的url的主要元素解析成卡片的形势展示在聊天界面
 
 ####6.2.1 发送消息
@@ -646,9 +665,6 @@ CVDManager.getSendersMap(userIdlist, new Action1<Map<String, CVDSenderProfile>>(
         );
 
 ```
-
-<br>
-<img width="300" src="http://xdfe.oss-cn-hangzhou.aliyuncs.com/cvd/android/71CDA0C2721C49CD23CA618E8E1754AF.png"><br>
 
 
 
