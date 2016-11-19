@@ -45,12 +45,11 @@
 <hr>
 
 
-----
+
 
 **注意：**
 - SDK 为用户端app接入提供简洁的接入方案，无需二次开发即可接入第三方app，与客服进行通信。
 - SDK 支持android sdk  16－25
-- 目前只支持android studio
 - 接入使用前需到[管理台](http://cvd.xiaoduotech.com/admin/)注册企业账号, 并配置app sdk信息, 获取**src**，**channelId**，**appkey**, 使用[demo](https://github.com/XiaoDuoTech/XiaoduoSDK_demo)无需配置
 - 由于sdk的Activity继承自AppCompatActivity, 所以需要appcompat-v7版本不低于v22.2.1
 
@@ -60,7 +59,7 @@
 
 使用`Android studio`的开发者只需在app module下的`build.gradle`中添加依赖:
 
-```groovy
+```gradle
   dependencies{
   compile 'org.greenrobot:eventbus:3.0.0'
   compile 'com.squareup.picasso:picasso:2.5.2'
@@ -72,6 +71,33 @@
 }
 ```
 
+**本地依赖aar:**
+1、 下载 [aar](http://cdn.xiaoduotech.com/cvd/android/sdk-release.aar), 在`module`下新建`libs`目录，将下载好的[aar](http://cdn.xiaoduotech.com/cvd/android/sdk-release.aar)拷贝到`libs`目录下。
+2、 在`module`的build.gradle文件添加如下内容
+
+```gradle
+repositories {
+    flatDir {
+        dirs 'libs' //this way we can find the .aar file in libs folder
+    }
+}
+```
+
+3、在`module`的build.gradle文件添加依赖
+
+```gradle
+dependencies {
+  compile 'org.greenrobot:eventbus:3.0.0'
+  compile 'com.squareup.picasso:picasso:2.5.2'
+  compile 'com.google.code.gson:gson:2.7'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+  compile 'com.android.support:appcompat-v7:23+' //不低于v22.2.1
+  compile 'com.android.support:recyclerview-v7:23+'//不低于v22.2.1
+  compile(name:'sdk-release', ext:'aar')
+}
+```
+
+**权限**
 SDK 需要如下权限，如果缺失，需要在`AndroidManifest`中添加权限:
 
 ```xml
