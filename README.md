@@ -61,19 +61,32 @@
 
 ```gradle
   dependencies{
+  //必须
   compile 'org.greenrobot:eventbus:3.0.0'
   compile 'com.squareup.picasso:picasso:2.5.2'
   compile 'com.google.code.gson:gson:2.7'
   compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
   compile 'com.android.support:appcompat-v7:23+' //不低于v22.2.1
   compile 'com.android.support:recyclerview-v7:23+'//不低于v22.2.1
-  compile 'com.xiaoduoteck.xiaoduosdk:xiaoduosdk:0.2.5@aar'
+  compile 'com.xiaoduotech.xiaoduosdk:sdk:0.2.7@aar'
+  compile 'com.xiaoduotech.xiaoduosdk:armv7a:0.2.7@aar'
+   //可选，如果你已经有这些对应jni目录，则必须依赖对应jni库
+   compile 'com.xiaoduotech.xiaoduosdk:armv5:0.2.7@aar'
+   compile 'com.xiaoduotech.xiaoduosdk:arm64:0.2.7@aar'
+   compile 'com.xiaoduotech.xiaoduosdk:x86:0.2.7@aar'
+   compile 'com.xiaoduotech.xiaoduosdk:x86_64:0.2.7@aar'
 }
 ```
 
-**本地依赖aar:**
+**本地依赖aar:** 在网络不好的情况下，为了提高编译速度可以选择本地依赖。
 
-1、 下载 [aar](http://cdn.xiaoduotech.com/cvd/android/sdk-release.aar), 在`module`下新建`libs`目录，将下载好的[aar](http://cdn.xiaoduotech.com/cvd/android/sdk-release.aar)拷贝到`libs`目录下。
+1、 下载 [sdk-release.aar](http://cdn.xiaoduotech.com/cvd/android/sdk-release.aar), [armv7a-release.aar](http://cdn.xiaoduotech.com/cvd/android/armv7a-release.aar), 在`module`下新建`libs`目录，将下载好的[sdk-release.aar](http://cdn.xiaoduotech.com/cvd/android/sdk-release.aar),  [armv7a-release.aar](http://cdn.xiaoduotech.com/cvd/android/armv7a-release.aar)拷贝到`libs`目录下。
+
+点击下载其他jni库： 
+[armv5-release.aar](http://cdn.xiaoduotech.com/cvd/android/armv5-release.aar)
+[armv64-release.aar](http://cdn.xiaoduotech.com/cvd/android/arm64-release.aar)
+[x86-release.aar](http://cdn.xiaoduotech.com/cvd/android/x86-release.aar)
+[x86_64-release.aar](http://cdn.xiaoduotech.com/cvd/android/x86_64-release.aar)
 
 2、 在`module`的build.gradle文件添加如下内容
 
@@ -95,7 +108,8 @@ dependencies {
   compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
   compile 'com.android.support:appcompat-v7:23+' //不低于v22.2.1
   compile 'com.android.support:recyclerview-v7:23+'//不低于v22.2.1
-  compile(name:'sdk-release', ext:'aar')
+  compile (name:'armv7a-release', ext:'aar')
+  compile (name:'sdk-release', ext:'aar')
 }
 ```
 
@@ -476,8 +490,9 @@ conversation.readAllMessage();//设置会话消息为已读，即将未读数置
 在sdk中消息主要作为类型占位符，adapter可以根据不同类型加载不同的viewholder，来显示对应消息。
 具体消息内容在`CVDMessageElem`中，一个消息可以包含多个`CVDMessageElem`。
  
+ <img src="http://yuml.me/diagram/nofunky/class/[CVDMessageElem]^-[CVDTextElem],[CVDMessageElem]^-[CVDFaceElem],[CVDMessageElem]^-[CVDImageElem],[CVDMessageElem]^-[CVDUrlElem]">
  
- <img src="http://yuml.me/diagram/nofunky/class/[CVDMessageElem]^-[CVDTextElem],[CVDMessageElem]^-[CVDFaceElem],[CVDMessageElem]^-[CVDImageElem],[CVDMessageElem]^-[CVDUrlElem],[CVDMessage]-.->[CVDMessageElem],[CVDMessage]^-[CVDTextMessage],[CVDMessage]^-[CVDImageMessage],[CVDMessage]^-[CVDNotifyMessage],[CVDMessage]^-[CVDUrlMessage]">
+<img src="http://yuml.me/diagram/nofunky/class/[CVDMessage]^-[CVDTextMessage],[CVDMessage]^-[CVDImageMessage],[CVDMessage]^-[CVDNotifyMessage],[CVDMessage]^-[CVDUrlMessage]">
 
 
 1. **文本消息:  `CVDTextMessage` ** 
