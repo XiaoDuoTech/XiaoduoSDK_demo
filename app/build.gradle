@@ -52,6 +52,6 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     compile rootProject.ext.bughd
-//    compile 'com.xiaoduoteck.xiaoduosdk:xiaoduosdk:0.2.5@aar'
     compile(name:'sdk-release', ext:'aar')
+    compile(name:'armv7a-release', ext:'aar')
 }
