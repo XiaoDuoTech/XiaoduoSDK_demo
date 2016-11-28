@@ -495,7 +495,7 @@ conversation.readAllMessage();//设置会话消息为已读，即将未读数置
 <img src="http://yuml.me/diagram/nofunky/class/[CVDMessage]^-[CVDTextMessage],[CVDMessage]^-[CVDImageMessage],[CVDMessage]^-[CVDNotifyMessage],[CVDMessage]^-[CVDUrlMessage]">
 
 
-1. **文本消息:  `CVDTextMessage` ** 
+1. **文本消息 `CVDTextMessage` ** 
 
 >包含 CVDTextElem  和 CVDFaceElem
 
