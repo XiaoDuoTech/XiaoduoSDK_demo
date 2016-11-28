@@ -495,19 +495,19 @@ conversation.readAllMessage();//设置会话消息为已读，即将未读数置
 <img src="http://yuml.me/diagram/nofunky/class/[CVDMessage]^-[CVDTextMessage],[CVDMessage]^-[CVDImageMessage],[CVDMessage]^-[CVDNotifyMessage],[CVDMessage]^-[CVDUrlMessage]">
 
 
-1. **文本消息:  `CVDTextMessage`** 
+**1.文本消息:  `CVDTextMessage`** 
 
 >包含 CVDTextElem  和 CVDFaceElem
 
-2.  **图片消息 `CVDImageMessage `**
+**2.图片消息 `CVDImageMessage `**
 
 >包含CVDImageElem
 
-3.  **通知消息 `CVDNotifyMessage `**
+**3.通知消息 `CVDNotifyMessage `**
 
 > 包含CVDTextElem和 CVDFaceElem, 本质上通知消息和文本消息是一样的，可以根据消息类型进行不同方式的展示。
 
-4. **url消息` CVDUrlMessage`**
+**4.url消息` CVDUrlMessage`**
 
 >包含CVDUrlElem , url消息是将用户输入的url的主要元素解析成卡片的形势展示在聊天界面
 
